@@ -2,6 +2,11 @@
 
 # step 0: prerequisites
 
+echo "LANG=en_US.UTF-8" >> /etc/environment
+echo "LC_ALL=en_US.UTF-8" >> /etc/environment
+
+. /etc/environment
+
 systemctl disable firewalld
 systemctl stop firewalld
 
