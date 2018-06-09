@@ -1,0 +1,8 @@
+CONTROLLER_IP_ADDRESS=newton-controller
+LOCAL_IP_ADDRESS=143.248.57.184
+
+RABBITMQ_PASSWD=rabbit_passwd
+NOVA_PASSWD=nova_passwd
+NEUTRON_PASSWD=neutron_passwd
+
+PROVIDER_INTERFACE=provider:ens36
