@@ -12,4 +12,3 @@ openstack image create "Ubuntu16.04" --file xenial-server-cloudimg-amd64-disk1.i
 
 cp httpd/conf.d/15-horizon_vhost.conf /etc/httpd/conf.d/15-horizon_vhost.conf
 cp neutron/dhcp_agent.ini /etc/neutron/dhcp_agent.ini
-cp sysconfig/selinux /etc/sysconfig/selinux
