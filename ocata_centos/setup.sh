@@ -14,7 +14,7 @@ systemctl start network
 # step 1: software repositories
 
 # set up OCATA
-#yum install -y centos-release-openstack-ocata
+yum install -y centos-release-openstack-ocata
 
 # update repositories
 yum update
