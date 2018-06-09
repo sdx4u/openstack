@@ -22,7 +22,7 @@ CONFIG_MARIADB_INSTALL=y
 CONFIG_GLANCE_INSTALL=y
 
 # Specify 'y' to install OpenStack Block Storage (cinder). ['y', 'n']
-CONFIG_CINDER_INSTALL=y
+CONFIG_CINDER_INSTALL=n
 
 # Specify 'y' to install OpenStack Shared File System (manila). ['y',
 # 'n']
@@ -38,16 +38,16 @@ CONFIG_NEUTRON_INSTALL=y
 CONFIG_HORIZON_INSTALL=y
 
 # Specify 'y' to install OpenStack Object Storage (swift). ['y', 'n']
-CONFIG_SWIFT_INSTALL=y
+CONFIG_SWIFT_INSTALL=n
 
 # Specify 'y' to install OpenStack Metering (ceilometer). Note this
 # will also automatically install gnocchi service and configures it as
 # the metrics backend. ['y', 'n']
-CONFIG_CEILOMETER_INSTALL=y
+CONFIG_CEILOMETER_INSTALL=n
 
 # Specify 'y' to install OpenStack Telemetry Alarming (Aodh). Note
 # Aodh requires Ceilometer to be installed as well. ['y', 'n']
-CONFIG_AODH_INSTALL=y
+CONFIG_AODH_INSTALL=n
 
 # Specify 'y' to install OpenStack Events Service (panko). ['y', 'n']
 CONFIG_PANKO_INSTALL=n
@@ -57,7 +57,7 @@ CONFIG_PANKO_INSTALL=n
 CONFIG_SAHARA_INSTALL=n
 
 # Specify 'y' to install OpenStack Orchestration (heat). ['y', 'n']
-CONFIG_HEAT_INSTALL=n
+CONFIG_HEAT_INSTALL=y
 
 # Specify 'y' to install OpenStack Container Infrastructure
 # Management Service (magnum). ['y', 'n']
@@ -76,7 +76,7 @@ CONFIG_CLIENT_INSTALL=y
 
 # Comma-separated list of NTP servers. Leave plain if Packstack
 # should not install ntpd on instances.
-CONFIG_NTP_SERVERS=
+CONFIG_NTP_SERVERS=1.kr.pool.ntp.org
 
 # Comma-separated list of servers to be excluded from the
 # installation. This is helpful if you are running Packstack a second
@@ -525,15 +525,15 @@ CONFIG_GLANCE_BACKEND=file
 
 # Password to use for the Block Storage service (cinder) to access
 # the database.
-CONFIG_CINDER_DB_PW=9cf8117c223f4b65
+CONFIG_CINDER_DB_PW=PW_PLACEHOLDER
 
 # Enter y if cron job for removing soft deleted DB rows should be
 # created.
-CONFIG_CINDER_DB_PURGE_ENABLE=True
+CONFIG_CINDER_DB_PURGE_ENABLE=y
 
 # Password to use for the Block Storage service to authenticate with
 # the Identity service.
-CONFIG_CINDER_KS_PW=eb04753e64e5485e
+CONFIG_CINDER_KS_PW=PW_PLACEHOLDER
 
 # Storage backend to use for the Block Storage service; valid options
 # are: lvm, gluster, nfs, vmdk, netapp, solidfire. ['lvm', 'gluster',
@@ -735,7 +735,7 @@ CONFIG_NOVA_SCHED_RAM_ALLOC_RATIO=1.5
 # Protocol used for instance migration. Valid options are: ssh and
 # tcp. Note that the tcp protocol is not encrypted, so it is insecure.
 # ['ssh', 'tcp']
-CONFIG_NOVA_COMPUTE_MIGRATE_PROTOCOL=ssh
+CONFIG_NOVA_COMPUTE_MIGRATE_PROTOCOL=tcp
 
 # PEM encoded certificate to be used for ssl on the https server,
 # leave blank if one should be generated, this certificate should not
@@ -876,7 +876,7 @@ CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=extnet:br-ex
 # issuing the following command: packstack --allinone --os-neutron-
 # ovs-bridge-mappings=ext-net:br-ex --os-neutron-ovs-bridge-interfaces
 # =br-ex:eth0
-CONFIG_NEUTRON_OVS_BRIDGE_IFACES=
+CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:enp8s0
 
 # Comma-separated list of Open vSwitch bridges that must be created
 # and connected to interfaces in compute nodes when flat or vlan type
@@ -1132,7 +1132,7 @@ CONFIG_HORIZON_SSL_CACERT=
 
 # Password to use for the Object Storage service to authenticate with
 # the Identity service.
-CONFIG_SWIFT_KS_PW=dee67bba8ad54408
+CONFIG_SWIFT_KS_PW=PW_PLACEHOLDER
 
 # Comma-separated list of devices to use as storage device for Object
 # Storage. Each entry must take the format /path/to/dev (for example,
@@ -1156,14 +1156,14 @@ CONFIG_SWIFT_STORAGE_FSTYPE=ext4
 # Custom seed number to use for swift_hash_path_suffix in
 # /etc/swift/swift.conf. If you do not provide a value, a seed number
 # is automatically generated.
-CONFIG_SWIFT_HASH=2bdf0253e8b9496b
+CONFIG_SWIFT_HASH=ee68d1b50f5c49b1
 
 # Size of the Object Storage loopback file storage device.
 CONFIG_SWIFT_STORAGE_SIZE=2G
 
 # Password used by Orchestration service user to authenticate against
 # the database.
-CONFIG_HEAT_DB_PW=PW_PLACEHOLDER
+CONFIG_HEAT_DB_PW=f5aedde58e63401f
 
 # Encryption key to use for authentication in the Orchestration
 # database (16, 24, or 32 chars).
@@ -1171,7 +1171,7 @@ CONFIG_HEAT_AUTH_ENC_KEY=9463563a63814a2f
 
 # Password to use for the Orchestration service to authenticate with
 # the Identity service.
-CONFIG_HEAT_KS_PW=PW_PLACEHOLDER
+CONFIG_HEAT_KS_PW=570cbb9cf5ca40d1
 
 # Specify 'y' to install the Orchestration CloudFormation API. ['y',
 # 'n']
@@ -1185,10 +1185,10 @@ CONFIG_HEAT_DOMAIN_ADMIN=heat_admin
 
 # Password for the Identity domain administrative user for
 # Orchestration.
-CONFIG_HEAT_DOMAIN_PASSWORD=PW_PLACEHOLDER
+CONFIG_HEAT_DOMAIN_PASSWORD=402539d5a2864ed4
 
 # Specify 'y' to provision for demo usage and testing. ['y', 'n']
-CONFIG_PROVISION_DEMO=y
+CONFIG_PROVISION_DEMO=n
 
 # Specify 'y' to configure the OpenStack Integration Test Suite
 # (tempest) for testing. The test suite requires OpenStack Networking
@@ -1284,18 +1284,18 @@ CONFIG_RUN_TEMPEST_TESTS=smoke
 CONFIG_PROVISION_OVS_BRIDGE=y
 
 # Password to use for Gnocchi to access the database.
-CONFIG_GNOCCHI_DB_PW=db864a7baf894433
+CONFIG_GNOCCHI_DB_PW=PW_PLACEHOLDER
 
 # Password to use for Gnocchi to authenticate with the Identity
 # service.
-CONFIG_GNOCCHI_KS_PW=6a6f1295fb074891
+CONFIG_GNOCCHI_KS_PW=PW_PLACEHOLDER
 
 # Secret key for signing Telemetry service (ceilometer) messages.
-CONFIG_CEILOMETER_SECRET=b635d66ff3dc4bc4
+CONFIG_CEILOMETER_SECRET=20104c74dac54210
 
 # Password to use for Telemetry to authenticate with the Identity
 # service.
-CONFIG_CEILOMETER_KS_PW=e41d620ef3104e9a
+CONFIG_CEILOMETER_KS_PW=PW_PLACEHOLDER
 
 # Ceilometer service name. ['httpd', 'ceilometer']
 CONFIG_CEILOMETER_SERVICE_NAME=httpd
@@ -1316,11 +1316,11 @@ CONFIG_REDIS_PORT=6379
 
 # Password to use for Telemetry Alarming to authenticate with the
 # Identity service.
-CONFIG_AODH_KS_PW=0cbb5c595a4746af
+CONFIG_AODH_KS_PW=PW_PLACEHOLDER
 
 # Password to use for Telemetry Alarming (AODH) to access the
 # database.
-CONFIG_AODH_DB_PW=86f28750ef164ad4
+CONFIG_AODH_DB_PW=PW_PLACEHOLDER
 
 # Password to use for Panko to access the database.
 CONFIG_PANKO_DB_PW=PW_PLACEHOLDER

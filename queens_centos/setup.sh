@@ -30,9 +30,9 @@ yum install -y openstack-packstack
 
 # step 3: run packstack to install openstack
 
-#packstack --answer-file=answer.txt
+packstack --answer-file=answer.txt
 
 # step 4: build a key to access VMs
 
-#cd ~
-#ssh-keygen -t rsa -f cloud.key
+cd ~
+ssh-keygen -t rsa -f cloud.key
