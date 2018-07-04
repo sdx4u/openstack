@@ -5,4 +5,4 @@ RABBITMQ_PASSWD=rabbit_passwd
 NOVA_PASSWD=nova_passwd
 NEUTRON_PASSWD=neutron_passwd
 
-PROVIDER_INTERFACE=extnet:ens34
+PROVIDER_INTERFACE=provider:ens34
