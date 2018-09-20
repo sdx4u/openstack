@@ -1,6 +1,10 @@
 #!/bin/bash
 
+vi config.sh
+
 . ./config.sh
+
+sudo vi /etc/hosts
 
 sudo apt install -y python-dev libmysqlclient-dev libffi-dev libssl-dev
 
