@@ -4,8 +4,6 @@
 
 . ~/keystonerc_admin
 
-# create zones
-
 INDEX=1
 for node in $(echo $COMPUTE_NODE | sed "s/,/ /g")
 do
