@@ -2,11 +2,6 @@
 
 . ./config.sh
 
-for node in $(echo $COMPUTE_NODE | sed "s/,/ /g")
-do
-	util/push-key.sh 22 root@$node
-done
-
 if [ "$OPENSTACK" = "ocata" ]; then
 	if [ "$ML2_TYPE" = "vlan" ]; then
 		cp config/ocata/answer-compute-vlan.cfg answer-compute.cfg
