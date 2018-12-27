@@ -3,32 +3,32 @@
 . ./config.sh
 
 # prerequisites
-systemctl disable firewalld
-systemctl stop firewalld
-systemctl disable NetworkManager
-systemctl stop NetworkManager
-systemctl enable network
-systemctl start network
+sudo systemctl disable firewalld
+sudo systemctl stop firewalld
+sudo systemctl disable NetworkManager
+sudo systemctl stop NetworkManager
+sudo systemctl enable network
+sudo systemctl start network
 
 # add RDO repository
 OS=`grep 'ID="rhel"' /etc/os-release | cut -d '"' -f2 | cut -d '"' -f1`
 if [ "$OS" == "rhel" ]; then
-	yum install -y https://www.rdoproject.org/repos/rdo-release.rpm
+	sudo yum install -y https://www.rdoproject.org/repos/rdo-release.rpm
 fi
 
 # update current packages
-yum update -y
+sudo yum update -y
 
 # add openstack repo
 if [ "$OPENSTACK" = "ocata" ]; then
-        yum install -y centos-release-openstack-ocata
+        sudo yum install -y centos-release-openstack-ocata
 elif [ "$OPENSTACK" = "pike" ]; then
-        yum install -y centos-release-openstack-pike
+        sudo yum install -y centos-release-openstack-pike
 elif [ "$OPENSTACK" = "queens" ]; then
-        yum install -y centos-release-openstack-queens
+        sudo yum install -y centos-release-openstack-queens
 else
         exit
 fi
 
 # install packstack
-yum install -y openstack-packstack
+sudo yum install -y openstack-packstack

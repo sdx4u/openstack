@@ -35,4 +35,4 @@ sed -i "s/EXTERNAL_INTERFACE/$EXTERNAL_INTERFACE/g" answer.cfg
 sed -i "s/EXTERNAL_NETWORK/$EXTERNAL_NETWORK.0/g" answer.cfg
 
 # install openstack
-packstack --answer-file=answer.cfg
+sudo packstack --answer-file=answer.cfg
