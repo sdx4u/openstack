@@ -7,16 +7,12 @@ then
 	mkdir ~/build
 	cp ovs/* ~/build && cd ~/build
 
-	sudo yum install -y rpm-build yum-utils \
-	            autoconf automake libtool \
+	sudo yum install -y rpm-build yum-utils autoconf automake libtool \
 	            systemd-units openssl openssl-devel \
 	            python tkinter python-twisted-core python-zope-interface python-six \
-	            desktop-file-utils \
-	            groff graphviz \
-	            procps-ng \
+	            desktop-file-utils groff graphviz procps-ng \
 	            checkpolicy selinux-policy-devel \
-	            libcap libcap-ng-devel \
-	            numactl-devel libpcap-devel
+	            libcap libcap-ng-devel numactl-devel libpcap-devel
 
 	tar xvfz openvswitch-2.6.3.tar.gz
 	cd openvswitch-2.6.3
@@ -29,16 +25,12 @@ then
         mkdir ~/build
         cp ovs/* ~/build && cd ~/build
 
-        sudo yum install -y rpm-build yum-utils \
-                    autoconf automake libtool \
+        sudo yum install -y rpm-build yum-utils autoconf automake libtool \
                     systemd-units openssl openssl-devel \
                     python tkinter python-twisted-core python-zope-interface python-six \
-                    desktop-file-utils \
-                    groff graphviz \
-                    procps-ng \
+                    desktop-file-utils groff graphviz procps-ng \
                     checkpolicy selinux-policy-devel \
-                    libcap libcap-ng-devel \
-                    numactl-devel libpcap-devel
+                    libcap libcap-ng-devel numactl-devel libpcap-devel
 
         tar xvfz openvswitch-2.8.4.tar.gz
         cd openvswitch-2.8.4
