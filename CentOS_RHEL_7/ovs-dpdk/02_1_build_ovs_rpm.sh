@@ -10,11 +10,13 @@ fi
 
 if [ "$1" = "2.6" ];
 then
+	sudo yum install -y ovs_rpms/*
+
 	mkdir ~/build
-	cp ovs/* ~/build && cd ~/build
+	cp ovs/openvswitch-2.6.3.tar.gz ~/build && cd ~/build
 
 	sudo yum install -y rpm-build yum-utils autoconf automake libtool \
-	            systemd-units openssl openssl-devel \
+	            systemd-units openssl openssl-devel python-devel \
 	            python tkinter python-twisted-core python-zope-interface python-six \
 	            desktop-file-utils groff graphviz procps-ng \
 	            checkpolicy selinux-policy-devel \
@@ -31,11 +33,13 @@ then
 	sudo yum install -y openvswitch-2.6.3*.rpm
 elif [ "$1" = "2.8" ];
 then
+	sudo yum install -y ovs_rpms/*
+
         mkdir ~/build
-        cp ovs/* ~/build && cd ~/build
+        cp ovs/openvswitch-2.8.4.tar.gz ~/build && cd ~/build
 
         sudo yum install -y rpm-build yum-utils autoconf automake libtool \
-                    systemd-units openssl openssl-devel \
+                    systemd-units openssl openssl-devel python-devel \
                     python tkinter python-twisted-core python-zope-interface python-six \
                     desktop-file-utils groff graphviz procps-ng \
                     checkpolicy selinux-policy-devel \
@@ -54,11 +58,13 @@ then
 	sudo yum install -y openvswitch-2.8.4*.rpm
 elif [ "$1" = "2.9" ];
 then
+	sudo yum install -y ovs_rpms/*
+
         mkdir ~/build
-        cp ovs/* ~/build && cd ~/build
+        cp ovs/openvswitch-2.9.0.tar.gz ~/build && cd ~/build
 
         sudo yum install -y rpm-build yum-utils autoconf automake libtool \
-                    systemd-units openssl openssl-devel \
+                    systemd-units openssl openssl-devel python-devel \
                     python tkinter python-twisted-core python-zope-interface python-six \
                     desktop-file-utils groff graphviz procps-ng \
                     checkpolicy selinux-policy-devel \
