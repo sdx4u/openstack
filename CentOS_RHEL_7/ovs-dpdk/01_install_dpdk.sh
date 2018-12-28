@@ -77,6 +77,8 @@ then
                         cd $DPDK_DIR
                         sudo make install T=$DPDK_TARGET DESTDIR=install
 
+                        cd $CURR_DIR
+
 			sudo yum install -y dpdk_rpms_1705/*
 
 			sudo cp bin/boot-dpdk.sh /usr/local/bin/boot-dpdk.sh
@@ -121,7 +123,9 @@ then
 			cd $DPDK_DIR
 			sudo make install T=$DPDK_TARGET DESTDIR=install
 
-			sudo yum install -y dpdk-17.11 dpdk-devel-17.11 dpdk-tools-17.11
+                        cd $CURR_DIR
+
+			sudo yum install -y dpdk_rpms_1711/*
 
 			sudo cp bin/boot-dpdk.sh /usr/local/bin/boot-dpdk.sh
 			sudo cp bin/kill-dpdk.sh /usr/local/bin/kill-dpdk.sh
