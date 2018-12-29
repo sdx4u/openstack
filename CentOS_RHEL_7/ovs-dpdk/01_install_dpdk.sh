@@ -13,7 +13,7 @@ then
 	if [ $? -ne 0 ]
 	then
 		echo "Add the following parameters at the end of GRUB_CMDLINE_LINUX in /etc/default/grub"
-		echo "default_hugepagesz=1G hugepagesz=1G hugepages=32 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on"
+		echo "default_hugepagesz=1G hugepagesz=1G hugepages=32 hugepagesz=2M hugepages=2048 iommu=on"
 	else
 		echo "export DPDK_DIR=/usr/src/dpdk-stable-16.11.7" >> ~/.bashrc
 		echo "export DPDK_TARGET=x86_64-native-linuxapp-gcc" >> ~/.bashrc
@@ -57,7 +57,7 @@ then
         if [ $? -ne 0 ]
         then
                 echo "Add the following parameters at the end of GRUB_CMDLINE_LINUX in /etc/default/grub"
-                echo "default_hugepagesz=1G hugepagesz=1G hugepages=32 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on"
+                echo "default_hugepagesz=1G hugepagesz=1G hugepages=32 hugepagesz=2M hugepages=2048 iommu=on"
         else
                 echo "export DPDK_DIR=/usr/src/dpdk-stable-17.05.2" >> ~/.bashrc
                 echo "export DPDK_TARGET=x86_64-native-linuxapp-gcc" >> ~/.bashrc
@@ -103,7 +103,7 @@ then
 	if [ $? -ne 0 ]
 	then
 		echo "Add the following parameters at the end of GRUB_CMDLINE_LINUX in /etc/default/grub"
-		echo "default_hugepagesz=1G hugepagesz=1G hugepages=32 hugepagesz=2M hugepages=2048 iommu=pt intel_iommu=on"
+		echo "default_hugepagesz=1G hugepagesz=1G hugepages=32 hugepagesz=2M hugepages=2048 iommu=on"
 	else
 		echo "export DPDK_DIR=/usr/src/dpdk-stable-17.11.3" >> ~/.bashrc
 		echo "export DPDK_TARGET=x86_64-native-linuxapp-gcc" >> ~/.bashrc
