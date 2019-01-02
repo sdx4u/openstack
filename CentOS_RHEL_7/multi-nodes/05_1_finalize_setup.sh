@@ -43,8 +43,8 @@ openstack router create private_router
 neutron router-interface-add private_router private_subnet
 neutron router-gateway-set private_router public_network
 
-openstack flavor create --vcpus 1 --ram 2048 --disk 10 --id auto ubuntu
-openstack flavor create --vcpus 1 --ram 2048 --disk 10 --id auto ubuntu_huge
+openstack flavor create --vcpus 4 --ram 4096 --disk 10 --id auto ubuntu
+openstack flavor create --vcpus 4 --ram 4096 --disk 10 --id auto ubuntu_huge
 openstack flavor set ubuntu_huge --property hw:mem_page_size=large
 
 echo "Please reboot the machine"

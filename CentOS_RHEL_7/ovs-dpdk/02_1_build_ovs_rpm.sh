@@ -10,7 +10,7 @@ fi
 
 if [ "$1" = "2.6" ];
 then
-	sudo yum install -y ovs_rpms/*
+	sudo yum install -y ovs_deps/*
 
 	mkdir ~/build
 	cp ovs/openvswitch-2.6.3.tar.gz ~/build && cd ~/build
@@ -33,7 +33,7 @@ then
 	sudo yum install -y openvswitch-2.6.3*.rpm
 elif [ "$1" = "2.8" ];
 then
-	sudo yum install -y ovs_rpms/*
+	sudo yum install -y ovs_deps/*
 
         mkdir ~/build
         cp ovs/openvswitch-2.8.4.tar.gz ~/build && cd ~/build
@@ -58,7 +58,7 @@ then
 	sudo yum install -y openvswitch-2.8.4*.rpm
 elif [ "$1" = "2.9" ];
 then
-	sudo yum install -y ovs_rpms/*
+	sudo yum install -y ovs_deps/*
 
         mkdir ~/build
         cp ovs/openvswitch-2.9.0.tar.gz ~/build && cd ~/build
