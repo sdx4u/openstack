@@ -43,8 +43,15 @@ openstack router create private_router
 neutron router-interface-add private_router private_subnet
 neutron router-gateway-set private_router public_network
 
-openstack flavor create --vcpus 4 --ram 4096 --disk 10 --id auto ubuntu
-openstack flavor create --vcpus 4 --ram 4096 --disk 10 --id auto ubuntu_huge
+openstack flavor create --vcpus 1 --ram 2048 --disk 10 --id auto ubuntu
+openstack flavor set ubuntu --property aggregate_instance_extra_specs:pinned=false
+
+openstack flavor create --vcpus 2 --ram 4096 --disk 10 --id auto ubuntu_huge
 openstack flavor set ubuntu_huge --property hw:mem_page_size=large
+openstack flavor set ubuntu_huge --property aggregate_instance_extra_specs:pinned=false
+
+openstack flavor create --vcpus 1 --ram 2048 --disk 10 --id auto ubuntu_pinned
+openstack flavor set ubuntu_pinned --property hw:cpu_policy=dedicated
+openstack flavor set ubuntu_pinned --property aggregate_instance_extra_specs:pinned=true
 
 echo "Please reboot the machine"
