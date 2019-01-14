@@ -30,7 +30,7 @@ then
 		then
 			sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-			sudo yum install -y automake gcc gcc-c++ elfutils-libelf-devel numactl-devel pciutils
+			sudo yum install -y automake gcc gcc-c++ elfutils-libelf-devel numactl-devel pciutils numactl
 
 			mkdir ~/build
 			cp dpdk/* ~/build && cd ~/build
@@ -77,7 +77,7 @@ then
                 then
                         sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-                        sudo yum install -y automake gcc gcc-c++ elfutils-libelf-devel numactl-devel pciutils
+                        sudo yum install -y automake gcc gcc-c++ elfutils-libelf-devel numactl-devel pciutils numactl
 
                         mkdir ~/build
                         cp dpdk/* ~/build && cd ~/build
@@ -126,7 +126,7 @@ then
 		then
 			sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-			sudo yum install -y automake gcc gcc-c++ elfutils-libelf-devel numactl-devel pciutils
+			sudo yum install -y automake gcc gcc-c++ elfutils-libelf-devel numactl-devel pciutils numactl
 
 			mkdir ~/build
 			cp dpdk/* ~/build && cd ~/build
