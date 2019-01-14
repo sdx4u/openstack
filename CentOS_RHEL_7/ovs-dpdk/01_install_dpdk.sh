@@ -2,6 +2,12 @@
 
 CURR_DIR=`pwd`
 
+OS=`grep 'ID="rhel"' /etc/os-release | cut -d '"' -f2 | cut -d '"' -f1`
+if [ "$OS" == "rhel" ]; then
+        sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
+        sudo subscription-manager repos --enable=rhel-7-server-optional-rpms
+fi
+
 if [ "$1" = "16.11" ];
 then
 	export DPDK_DIR=/usr/src/dpdk-stable-16.11.7
@@ -33,7 +39,10 @@ then
 			cd $DPDK_DIR
 			sudo make install T=$DPDK_TARGET DESTDIR=install
 
-			sudo yum install -y dpdk-16.11.2 dpdk-devel-16.11.2 dpdk-tools-16.11.2
+			if [ -z $2 ];
+			then
+				sudo yum install -y dpdk-16.11.2 dpdk-devel-16.11.2 dpdk-tools-16.11.2
+			fi
 
 			sudo cp bin/boot-dpdk.sh /usr/local/bin/boot-dpdk.sh
 			sudo cp bin/kill-dpdk.sh /usr/local/bin/kill-dpdk.sh
@@ -79,7 +88,10 @@ then
 
                         cd $CURR_DIR
 
-			sudo yum install -y dpdk_rpms_1705/*
+			if [ -z $2 ];
+			then
+				sudo yum install -y dpdk_rpms_1705/*
+			fi
 
 			sudo cp bin/boot-dpdk.sh /usr/local/bin/boot-dpdk.sh
 			sudo cp bin/kill-dpdk.sh /usr/local/bin/kill-dpdk.sh
@@ -125,7 +137,10 @@ then
 
                         cd $CURR_DIR
 
-			sudo yum install -y dpdk_rpms_1711/*
+			if [ -z $2 ];
+			then
+				sudo yum install -y dpdk_rpms_1711/*
+			fi
 
 			sudo cp bin/boot-dpdk.sh /usr/local/bin/boot-dpdk.sh
 			sudo cp bin/kill-dpdk.sh /usr/local/bin/kill-dpdk.sh

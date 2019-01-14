@@ -31,6 +31,18 @@ then
 
 	cd ~/build/openvswitch-2.6.3/rpm/rpmbuild/RPMS/x86_64
 	sudo yum install -y openvswitch-2.6.3*.rpm
+
+	sudo yum install -y libibverbs
+
+	sudo systemctl start openvswitch
+	sudo systemctl enable openvswitch
+
+	sleep 5
+
+	sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-init=true
+	sudo systemctl restart openvswitch
+
+	echo "Please reboot the machine"
 elif [ "$1" = "2.8" ];
 then
 	sudo yum install -y ovs_deps/*
@@ -56,6 +68,18 @@ then
 
 	cd ~/build/openvswitch-2.8.4/rpm/rpmbuild/RPMS/x86_64
 	sudo yum install -y openvswitch-2.8.4*.rpm
+
+	sudo yum install -y libibverbs
+
+	sudo systemctl start openvswitch
+	sudo systemctl enable openvswitch
+
+	sleep 5
+
+	sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-init=true
+	sudo systemctl restart openvswitch
+
+	echo "Please reboot the machine"
 elif [ "$1" = "2.9" ];
 then
 	sudo yum install -y ovs_deps/*
@@ -81,6 +105,18 @@ then
 
 	cd ~/build/openvswitch-2.9.0/rpm/rpmbuild/RPMS/x86_64
 	sudo yum install -y openvswitch-2.9.0*.rpm
+
+	sudo yum install -y libibverbs
+
+	sudo systemctl start openvswitch
+	sudo systemctl enable openvswitch
+
+	sleep 5
+
+	sudo ovs-vsctl --no-wait set Open_vSwitch . other_config:dpdk-init=true
+	sudo systemctl restart openvswitch
+
+	echo "Please reboot the machine"
 else
 	echo "$0 [ 2.6 | 2.8 | 2.9 ]"
 fi

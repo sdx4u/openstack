@@ -3,12 +3,11 @@
 EX_INT=enp216s0f0
 VL_INT=enp59s0f0
 
-modprobe vfio-pci
-/usr/bin/chmod a+x /dev/vfio
-/usr/bin/chmod 0666 /dev/vfio/*
+#modprobe uio
+#insmod /usr/src/dpdk-stable-17.11.3/x86_64-native-linuxapp-gcc/kmod/igb_uio.ko
 
 # br-ex
-#dpdk-devbind --bind=vfio-pci $EX_INT
+#/usr/src/dpdk-stable-17.11.3/usertools/dpdk-devbind.py --bind=igb_uio $EX_INT
 
 # br-vlan
-#dpdk-devbind --bind=vfio-pci $VL_INT
+#/usr/src/dpdk-stable-17.11.3/usertools/dpdk-devbind.py --bind=igb_uio $VL_INT
