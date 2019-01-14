@@ -39,7 +39,7 @@ then
 			cd $DPDK_DIR
 			sudo make install T=$DPDK_TARGET DESTDIR=install
 
-			if [ -z $2 ];
+			if [ ! -z $2 ];
 			then
 				sudo yum install -y dpdk-16.11.2 dpdk-devel-16.11.2 dpdk-tools-16.11.2
 			fi
@@ -88,7 +88,7 @@ then
 
                         cd $CURR_DIR
 
-			if [ -z $2 ];
+			if [ ! -z $2 ];
 			then
 				sudo yum install -y dpdk_rpms_1705/*
 			fi
@@ -137,7 +137,7 @@ then
 
                         cd $CURR_DIR
 
-			if [ -z $2 ];
+			if [ ! -z $2 ];
 			then
 				sudo yum install -y dpdk_rpms_1711/*
 			fi
@@ -154,5 +154,5 @@ then
 		echo "Please reboot the machine"
 	fi
 else
-	echo "$0 [ 16.11 | 17.05 | 17.11 ]"
+	echo "$0 [ 16.11 | 17.05 | 17.11 ] [pkg]"
 fi
