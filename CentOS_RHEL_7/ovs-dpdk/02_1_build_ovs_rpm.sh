@@ -2,12 +2,6 @@
 
 CURR=`pwd`
 
-OS=`grep 'ID="rhel"' /etc/os-release | cut -d '"' -f2 | cut -d '"' -f1`
-if [ "$OS" == "rhel" ]; then
-	sudo subscription-manager repos --enable=rhel-7-server-extras-rpms
-	sudo subscription-manager repos --enable=rhel-7-server-optional-rpms
-fi
-
 if [ "$1" = "2.6" ];
 then
 	sudo yum install -y ovs_deps/*

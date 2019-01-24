@@ -26,6 +26,9 @@ then
         ./boot.sh
 	./configure --with-dpdk=$DPDK_BUILD
 
+	make
+	make install
+
 	echo "Please reboot the machine"
 elif [ "$1" = "2.9" ];
 then
