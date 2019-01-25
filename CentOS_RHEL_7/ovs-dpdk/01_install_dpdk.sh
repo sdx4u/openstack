@@ -139,7 +139,7 @@ then
 
 			if [ ! -z $2 ];
 			then
-				sudo yum install -y dpdk_rpms_1711/*
+				sudo yum install -y dpdk-17.11-15 dpdk-devel-17.11-15 dpdk-tools-17.11-15
 			fi
 
 			sudo cp bin/boot-dpdk.sh /usr/local/bin/boot-dpdk.sh

@@ -11,8 +11,8 @@ do
 
 	nova aggregate-create node$INDEX zone$INDEX
 	nova aggregate-add-host $INDEX $HOST
-	nova aggregate-set-metadata $INDEX pinned=false
-	#nova aggregate-set-metadata $INDEX pinned=true
+	#nova aggregate-set-metadata $INDEX pinned=false
+	nova aggregate-set-metadata $INDEX pinned=true
 
 	INDEX=$(expr $INDEX + 1)
 done

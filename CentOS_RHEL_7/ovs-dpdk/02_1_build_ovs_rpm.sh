@@ -54,8 +54,6 @@ then
         tar xvfz openvswitch-2.8.4.tar.gz
         cd openvswitch-2.8.4
 
-	sed -i "s/BuildRequires: dpdk-devel/#BuildRequires: dpdk-devel/g" rhel/openvswitch-fedora.spec
-
         ./boot.sh
         CFLAGS='-march=native' ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --with-dpdk=$DPDK_BUILD
         sudo make rpm-fedora RPMBUILD_OPT="--with dpdk --without check"
@@ -90,8 +88,6 @@ then
 
         tar xvfz openvswitch-2.9.0.tar.gz
         cd openvswitch-2.9.0
-
-	sed -i "s/BuildRequires: dpdk-devel/#BuildRequires: dpdk-devel/g" rhel/openvswitch-fedora.spec
 
         ./boot.sh
         CFLAGS='-march=native' ./configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc --with-dpdk=$DPDK_BUILD
