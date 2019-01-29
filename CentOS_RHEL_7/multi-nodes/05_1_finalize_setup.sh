@@ -80,7 +80,7 @@ openstack flavor create --vcpus 4 --ram 8192 --disk 20 --id auto ubuntu_pinned
 openstack flavor set ubuntu_pinned --property hw:cpu_policy=dedicated
 openstack flavor set ubuntu_pinned --property aggregate_instance_extra_specs:pinned=true
 
-openstack flavor create --vcpus 4 --ram 8192 --disk 20 --id auto ubuntu_pinned
+openstack flavor create --vcpus 4 --ram 8192 --disk 20 --id auto ubuntu_huge_pinned
 openstack flavor set ubuntu_huge_pinned --property hw:mem_page_size=large
 openstack flavor set ubuntu_huge_pinned --property hw:cpu_policy=dedicated
 openstack flavor set ubuntu_huge_pinned --property aggregate_instance_extra_specs:pinned=true
