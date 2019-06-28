@@ -57,23 +57,41 @@ sed -i "s/`echo $SOURCE`/CONFIG_KEYSTONE_ADMIN_PW=`echo $KEYSTONE_ADMIN_PW`/g" a
 
 if [ -z "$TUNNEL_INTERFACE" ] # vxlan
 then
+
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_TYPE_DRIVERS`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vxlan,flat/g" answer.cfg
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES=vxlan/g" answer.cfg
 
+    SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VNI_RANGES`
+    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VNI_RANGES=1001:2000/g" answer.cfg
+
+    SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VXLAN_GROUP`
+    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VXLAN_GROUP=239.1.1.2/g" answer.cfg
+
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=extnet:br-ex/g" answer.cfg
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_BRIDGE_IFACES`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:`echo $EXTERNAL_INTERFACE`/g" answer.cfg
+
 else # vlan
+
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_TYPE_DRIVERS`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vlan,flat/g" answer.cfg
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES=vlan/g" answer.cfg
+
+    SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VLAN_RANGES`
+    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VLAN_RANGES=intnet:1001:2000,extnet/g" answer.cfg
+
+    SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES`
+    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES=1001:2000/g" answer.cfg
+
+    SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VNI_RANGES`
+    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VNI_RANGES=1001:2000/g" answer.cfg
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=intnet:br-vlan,extnet:br-ex/g" answer.cfg
@@ -86,19 +104,14 @@ else # vlan
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_TUNNEL_IF=`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_TUNNEL_IF=`echo $TUNNEL_INTERFACE`/g" answer.cfg
+
 fi
-
-SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VLAN_RANGES`
-sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VLAN_RANGES=intnet:1001:2000,extnet/g" answer.cfg
-
-SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES`
-sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES=1001:2000/g" answer.cfg
-
-SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VXLAN_GROUP`
-sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VXLAN_GROUP=239.1.1.2/g" answer.cfg
 
 SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VNI_RANGES`
 sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VNI_RANGES=1001:2000/g" answer.cfg
+
+sed -i "s/CONFIG_PROVISION_DEMO=y/CONFIG_PROVISION_DEMO=n/g" answer.cfg
+sed -i "s/CONFIG_HORIZON_SSL=n/CONFIG_HORIZON_SSL=y/g" answer.cfg
 
 # install openstack
 packstack --answer-file=answer.cfg

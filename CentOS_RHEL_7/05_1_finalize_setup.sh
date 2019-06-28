@@ -12,11 +12,23 @@ HOSTNAME=`hostname`
 
 sudo sed -i "s/vncserver_proxyclient_address=$HOSTNAME/vncserver_proxyclient_address=$CONTROLLER_NODE/g" /etc/nova/nova.conf
 
+# dhcp
+
+sed -i "s/enable_isolated_metadata=False/enable_isolated_metadata=True/g" /etc/neutron/dhcp_agent.ini
+
+# set admin permission
+
 . ~/keystonerc_admin
 
 # image
 
 mkdir ~/images; cd ~/images
+
+curl -LO http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-disk.img
+
+openstack image create --public \
+  --disk-format qcow2 --container-format bare \
+  --file cirros-0.3.5-x86_64-disk.img cirros_0_3_5
 
 curl -LO http://www.sdx4u.net/downloads/trusty-server-cloudimg-amd64.img
 
