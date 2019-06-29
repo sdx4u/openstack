@@ -48,6 +48,18 @@ openstack image create --public \
   --disk-format qcow2 --container-format bare \
   --file bionic-server-cloudimg-amd64.img ubuntu_18_04
 
+curl -LO http://www.sdx4u.net/downloads/CentOS-7-x86_64-GenericCloud-1511.qcow2
+
+openstack image create --public \
+  --disk-format qcow2 --container-format bare \
+  --file CentOS-7-x86_64-GenericCloud-1511.qcow2 CentOS_7_1511
+
+curl -LO http://www.sdx4u.net/downloads/CentOS-7-x86_64-GenericCloud-1905.qcow2
+
+openstack image create --public \
+  --disk-format qcow2 --container-format bare \
+  --file CentOS-7-x86_64-GenericCloud-1905.qcow2 CentOS_7_1905
+
 # public network
 
 openstack network create --external \
