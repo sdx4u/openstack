@@ -55,6 +55,12 @@ sed -i "s/`echo $SOURCE`/CONFIG_KEYSTONE_ADMIN_PW=`echo $KEYSTONE_ADMIN_PW`/g" a
 
 # update network information
 
+SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS
+sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS=openvswitch/g" answer.cfg
+
+SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_L2_AGENT
+sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_L2_AGENT=openvswitch/g" answer.cfg
+
 if [ -z "$TUNNEL_INTERFACE" ] # vxlan
 then
 
