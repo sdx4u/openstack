@@ -74,7 +74,7 @@ then
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=extnet:br-ex/g" answer.cfg
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_BRIDGE_IFACES`
-    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-ex:`echo $EXTERNAL_INTERFACE`/g" answer.cfg
+    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_IFACES=/g" answer.cfg
 
 else # vlan
 
@@ -87,17 +87,11 @@ else # vlan
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VLAN_RANGES`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VLAN_RANGES=intnet:1001:2000,extnet/g" answer.cfg
 
-    SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES`
-    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES=1001:2000/g" answer.cfg
-
-    SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VNI_RANGES`
-    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VNI_RANGES=1001:2000/g" answer.cfg
-
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS=intnet:br-vlan,extnet:br-ex/g" answer.cfg
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_BRIDGE_IFACES`
-    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-vlan:`echo $TUNNEL_INTERFACE`,br-ex:`echo $EXTERNAL_INTERFACE`/g" answer.cfg
+    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_IFACES=br-vlan:`echo $TUNNEL_INTERFACE`/g" answer.cfg
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_BRIDGES_COMPUTE`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGES_COMPUTE=br-vlan/g" answer.cfg
@@ -107,11 +101,8 @@ else # vlan
 
 fi
 
-SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_VNI_RANGES`
-sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_VNI_RANGES=1001:2000/g" answer.cfg
-
 sed -i "s/CONFIG_PROVISION_DEMO=y/CONFIG_PROVISION_DEMO=n/g" answer.cfg
 sed -i "s/CONFIG_HORIZON_SSL=n/CONFIG_HORIZON_SSL=y/g" answer.cfg
 
 # install openstack
-packstack --answer-file=answer.cfg
+#packstack --answer-file=answer.cfg

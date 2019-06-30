@@ -18,6 +18,7 @@ sed -i "s/enable_isolated_metadata=False/enable_isolated_metadata=True/g" /etc/n
 
 # set admin permission
 
+cd
 . ~/keystonerc_admin
 
 # image
@@ -30,35 +31,37 @@ openstack image create --public \
   --disk-format qcow2 --container-format bare \
   --file cirros-0.3.5-x86_64-disk.img cirros_0_3_5
 
-curl -LO http://www.sdx4u.net/downloads/trusty-server-cloudimg-amd64.img
+if [ ! -z $1 ]; then
+    curl -LO http://www.sdx4u.net/downloads/trusty-server-cloudimg-amd64.img
 
-openstack image create --public \
-  --disk-format qcow2 --container-format bare \
-  --file trusty-server-cloudimg-amd64.img ubuntu_14_04
+    openstack image create --public \
+      --disk-format qcow2 --container-format bare \
+      --file trusty-server-cloudimg-amd64.img ubuntu_14_04
 
-curl -LO http://www.sdx4u.net/downloads/xenial-server-cloudimg-amd64.img
+    curl -LO http://www.sdx4u.net/downloads/xenial-server-cloudimg-amd64.img
 
-openstack image create --public \
-  --disk-format qcow2 --container-format bare \
-  --file xenial-server-cloudimg-amd64.img ubuntu_16_04
+    openstack image create --public \
+      --disk-format qcow2 --container-format bare \
+      --file xenial-server-cloudimg-amd64.img ubuntu_16_04
 
-curl -LO http://www.sdx4u.net/downloads/bionic-server-cloudimg-amd64.img
+    curl -LO http://www.sdx4u.net/downloads/bionic-server-cloudimg-amd64.img
 
-openstack image create --public \
-  --disk-format qcow2 --container-format bare \
-  --file bionic-server-cloudimg-amd64.img ubuntu_18_04
+    openstack image create --public \
+      --disk-format qcow2 --container-format bare \
+      --file bionic-server-cloudimg-amd64.img ubuntu_18_04
 
-curl -LO http://www.sdx4u.net/downloads/CentOS-7-x86_64-GenericCloud-1511.qcow2
+    #curl -LO http://www.sdx4u.net/downloads/CentOS-7-x86_64-GenericCloud-1511.qcow2
 
-openstack image create --public \
-  --disk-format qcow2 --container-format bare \
-  --file CentOS-7-x86_64-GenericCloud-1511.qcow2 CentOS_7_1511
+    #openstack image create --public \
+    #  --disk-format qcow2 --container-format bare \
+    #  --file CentOS-7-x86_64-GenericCloud-1511.qcow2 CentOS_7_1511
 
-curl -LO http://www.sdx4u.net/downloads/CentOS-7-x86_64-GenericCloud-1905.qcow2
+    #curl -LO http://www.sdx4u.net/downloads/CentOS-7-x86_64-GenericCloud-1905.qcow2
 
-openstack image create --public \
-  --disk-format qcow2 --container-format bare \
-  --file CentOS-7-x86_64-GenericCloud-1905.qcow2 CentOS_7_1905
+    #openstack image create --public \
+    #  --disk-format qcow2 --container-format bare \
+    #  --file CentOS-7-x86_64-GenericCloud-1905.qcow2 CentOS_7_1905
+fi
 
 # public network
 
