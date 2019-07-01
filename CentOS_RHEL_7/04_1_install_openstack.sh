@@ -2,7 +2,7 @@
 
 if [ $(id -u) -ne 0 ]
 then
-    echo "Please run as root"
+    echo "Please run as root ($ sudo -s)"
     exit
 fi
 
@@ -55,10 +55,10 @@ sed -i "s/`echo $SOURCE`/CONFIG_KEYSTONE_ADMIN_PW=`echo $KEYSTONE_ADMIN_PW`/g" a
 
 # update network information
 
-SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS
+SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS`
 sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS=openvswitch/g" answer.cfg
 
-SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_L2_AGENT
+SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_L2_AGENT`
 sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_L2_AGENT=openvswitch/g" answer.cfg
 
 if [ -z "$TUNNEL_INTERFACE" ] # vxlan
@@ -111,4 +111,4 @@ sed -i "s/CONFIG_PROVISION_DEMO=y/CONFIG_PROVISION_DEMO=n/g" answer.cfg
 sed -i "s/CONFIG_HORIZON_SSL=n/CONFIG_HORIZON_SSL=y/g" answer.cfg
 
 # install openstack
-#packstack --answer-file=answer.cfg
+packstack --answer-file=answer.cfg

@@ -10,11 +10,11 @@ fi
 
 HOSTNAME=`hostname`
 
-sudo sed -i "s/vncserver_proxyclient_address=$HOSTNAME/vncserver_proxyclient_address=$CONTROLLER_NODE/g" /etc/nova/nova.conf
+sed -i "s/vncserver_proxyclient_address=$HOSTNAME/vncserver_proxyclient_address=$CONTROLLER_NODE/g" /etc/nova/nova.conf
 
 # dhcp
 
-sed -i "s/enable_isolated_metadata=False/enable_isolated_metadata=True/g" /etc/neutron/dhcp_agent.ini
+sed -i "s/#enable_isolated_metadata = false/enable_isolated_metadata = true/g" /etc/neutron/dhcp_agent.ini
 
 # set admin permission
 
