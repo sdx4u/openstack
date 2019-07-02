@@ -107,8 +107,10 @@ else # vlan
 
 fi
 
+sed -i "s/CONFIG_CINDER_INSTALL=y/CONFIG_CINDER_INSTALL=n/g" answer.cfg
+sed -i "s/CONFIG_SWIFT_INSTALL=y/CONFIG_SWIFT_INSTALL=n/g" answer.cfg
 sed -i "s/CONFIG_PROVISION_DEMO=y/CONFIG_PROVISION_DEMO=n/g" answer.cfg
 sed -i "s/CONFIG_HORIZON_SSL=n/CONFIG_HORIZON_SSL=y/g" answer.cfg
 
 # install openstack
-packstack --answer-file=answer.cfg
+#packstack --answer-file=answer.cfg

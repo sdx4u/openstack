@@ -19,8 +19,6 @@ if [ -f /etc/sysconfig/network-scripts/ifcfg-$EXTERNAL_INTERFACE ]; then
     cp config/ifcfg-bridge /etc/sysconfig/network-scripts/ifcfg-$EXTERNAL_INTERFACE
 
     sed -i "s/INTERFACE/$EXTERNAL_INTERFACE/g" /etc/sysconfig/network-scripts/ifcfg-$EXTERNAL_INTERFACE
-else
-    ovs-vsctl add-br br-ex
 fi
 
 util/push-key.sh 22 root@$CONTROLLER_NODE
