@@ -14,18 +14,16 @@ sed -i "s/vncserver_proxyclient_address=$HOSTNAME/vncserver_proxyclient_address=
 
 # dhcp
 
-sed -i "s/#enable_isolated_metadata = false/enable_isolated_metadata = true/g" /etc/neutron/dhcp_agent.ini
-sed -i "/enable_isolated_metadata=False/d" /etc/neutron/dhcp_agent.ini
-
-sed -i "s/#force_metadata = false/force_metadata = true/g" /etc/neutron/dhcp_agent.ini
-
-sed -i "s/#enable_metadata_network = false/enable_metadata_network = false/g" /etc/neutron/dhcp_agent.ini
-sed -i "/enable_metadata_network=False/d" /etc/neutron/dhcp_agent.ini
+#echo sed -i "s/#enable_isolated_metadata = false/enable_isolated_metadata = true/g" /etc/neutron/dhcp_agent.ini
+#echo sed -i "/enable_isolated_metadata=False/d" /etc/neutron/dhcp_agent.ini
+#echo sed -i "s/#force_metadata = false/force_metadata = true/g" /etc/neutron/dhcp_agent.ini
+#echo sed -i "s/#enable_metadata_network = false/enable_metadata_network = true/g" /etc/neutron/dhcp_agent.ini
+#echo sed -i "/enable_metadata_network=False/d" /etc/neutron/dhcp_agent.ini
 
 # metadata
 
-sed -i "s/#nova_metadata_host = 127.0.0.1/nova_metadata_host = `echo $CONTROLLER_NODE`/g" /etc/neutron/metadata_agent.ini
-sed -i "s/#nova_metadata_port = 8775/nova_metadata_port = 8775/g" /etc/neutron/metadata_agent.ini
+#echo sed -i "s/#nova_metadata_host = 127.0.0.1/nova_metadata_host = `echo $CONTROLLER_NODE`/g" /etc/neutron/metadata_agent.ini
+#echo sed -i "s/#nova_metadata_port = 8775/nova_metadata_port = 8775/g" /etc/neutron/metadata_agent.ini
 
 # set admin permission
 
@@ -86,16 +84,3 @@ openstack subnet create --network public_network \
   --allocation-pool start=$IP_POOL_START,end=$IP_POOL_END \
   --dns-nameserver $DNS_NAMESERVER --gateway $EXTERNAL_GW_ADDRESS \
   --subnet-range $EXTERNAL_NETWORK.0/24 public_subnet
-
-# private network
-
-openstack network create private_network
-
-openstack subnet create --network private_network \
-  --allocation-pool start=$VIP_POOL_START,end=$VIP_POOL_END \
-  --dns-nameserver $DNS_NAMESERVER --gateway $INTERNAL_GW_ADDRESS \
-  --subnet-range $INTERNAL_NETWORK.0/24 private_subnet
-
-openstack router create private_router
-neutron router-interface-add private_router private_subnet
-neutron router-gateway-set private_router public_network

@@ -63,7 +63,6 @@ sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_L2_AGENT=openvswitch/g" answer.cfg
 
 if [ -z "$TUNNEL_INTERFACE" ] # vxlan
 then
-
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_TYPE_DRIVERS`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vxlan,flat/g" answer.cfg
 
@@ -81,9 +80,7 @@ then
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_BRIDGE_IFACES`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGE_IFACES=/g" answer.cfg
-
 else # vlan
-
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_ML2_TYPE_DRIVERS`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_ML2_TYPE_DRIVERS=vlan,flat/g" answer.cfg
 
@@ -104,7 +101,6 @@ else # vlan
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_TUNNEL_IF=`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_TUNNEL_IF=`echo $TUNNEL_INTERFACE`/g" answer.cfg
-
 fi
 
 sed -i "s/CONFIG_CINDER_INSTALL=y/CONFIG_CINDER_INSTALL=n/g" answer.cfg
@@ -113,4 +109,4 @@ sed -i "s/CONFIG_PROVISION_DEMO=y/CONFIG_PROVISION_DEMO=n/g" answer.cfg
 sed -i "s/CONFIG_HORIZON_SSL=n/CONFIG_HORIZON_SSL=y/g" answer.cfg
 
 # install openstack
-#packstack --answer-file=answer.cfg
+packstack --answer-file=answer.cfg
