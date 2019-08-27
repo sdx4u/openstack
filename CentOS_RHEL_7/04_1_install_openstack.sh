@@ -98,15 +98,12 @@ else # vlan
 
     SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_BRIDGES_COMPUTE`
     sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_BRIDGES_COMPUTE=br-vlan/g" answer.cfg
-
-    SOURCE=`cat answer.cfg | egrep -v "(^#.*|^$)" | grep CONFIG_NEUTRON_OVS_TUNNEL_IF=`
-    sed -i "s/`echo $SOURCE`/CONFIG_NEUTRON_OVS_TUNNEL_IF=`echo $TUNNEL_INTERFACE`/g" answer.cfg
 fi
 
 sed -i "s/CONFIG_CINDER_INSTALL=y/CONFIG_CINDER_INSTALL=n/g" answer.cfg
 sed -i "s/CONFIG_SWIFT_INSTALL=y/CONFIG_SWIFT_INSTALL=n/g" answer.cfg
 sed -i "s/CONFIG_PROVISION_DEMO=y/CONFIG_PROVISION_DEMO=n/g" answer.cfg
-sed -i "s/CONFIG_HORIZON_SSL=n/CONFIG_HORIZON_SSL=y/g" answer.cfg
+#sed -i "s/CONFIG_HORIZON_SSL=n/CONFIG_HORIZON_SSL=y/g" answer.cfg
 
 # install openstack
-packstack --answer-file=answer.cfg
+#packstack --answer-file=answer.cfg
